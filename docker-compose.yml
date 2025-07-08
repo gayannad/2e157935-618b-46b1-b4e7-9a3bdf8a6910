@@ -14,12 +14,10 @@ services:
             - "8000:8000"
 
     test:
-        build:
-            context: .
-            dockerfile: Dockerfile
-        volumes:
-            - .:/app
-        working_dir: /app
-        command: vendor/bin/phpunit
-        env_file:
-            - .env
+      build:
+        context: .
+        dockerfile: Dockerfile
+      volumes:
+        - .:/app
+      working_dir: /app
+      entrypoint: sh -c "cp .env.example .env && php artisan key:generate && vendor/bin/phpunit"
