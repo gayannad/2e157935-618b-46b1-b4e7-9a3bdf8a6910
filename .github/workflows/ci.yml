@@ -25,5 +25,8 @@ jobs:
       - name: Build Docker containers
         run: docker-compose build
 
+      - name: Install Composer dependencies
+        run: docker compose run --rm app composer install --no-interaction --prefer-dist
+
       - name: Run tests
         run: docker-compose run --rm test
