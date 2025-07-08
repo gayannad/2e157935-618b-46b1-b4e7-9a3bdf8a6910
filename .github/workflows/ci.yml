@@ -28,5 +28,8 @@ jobs:
       - name: Install Composer dependencies
         run: docker compose run --rm app composer install --no-interaction --prefer-dist
 
+      - name: Generate app key
+        run: docker compose run --rm app php artisan key:generate
+
       - name: Run tests
         run: docker-compose run --rm test
