@@ -64,6 +64,9 @@ class ReportGenerate extends Command
         };
     }
 
+    /**
+     *generate diagnostic report
+     */
     private function generateDiagnosticReport($student, $latest, $assessments, $questions)
     {
         $assessment = $assessments->firstWhere('id', $latest['assessmentId']);
@@ -97,6 +100,9 @@ class ReportGenerate extends Command
         }
     }
 
+    /**
+     *generate progress report
+     */
     private function generateProgressReport($student, $responses, $assessments, $questions)
     {
         $firstAssessment = $assessments->firstWhere('id', $responses->first()['assessmentId']);
@@ -123,6 +129,9 @@ class ReportGenerate extends Command
         $this->info("{$student['firstName']} {$student['lastName']} got {$diff} more correct in the recent completed assessment than the oldest.");
     }
 
+    /**
+     *generate feedback report
+     */
     private function generateFeedbackReport($student, $latest, $assessments, $questions)
     {
         $assessment = $assessments->firstWhere('id', $latest['assessmentId']);
