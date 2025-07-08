@@ -22,4 +22,4 @@ services:
         working_dir: /app
         command: vendor/bin/phpunit
         env_file:
-            - .env.testing
+            - .env

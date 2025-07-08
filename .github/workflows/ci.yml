@@ -28,6 +28,9 @@ jobs:
       - name: Install Composer dependencies
         run: docker compose run --rm app composer install --no-interaction --prefer-dist
 
+      - name: Create .env file
+        run: docker compose run --rm app cp .env.example .env
+
       - name: Generate app key
         run: docker compose run --rm app php artisan key:generate
 
